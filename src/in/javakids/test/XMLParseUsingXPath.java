@@ -3,10 +3,13 @@
  */
 package in.javakids.test;
 
+import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 
+import javax.xml.transform.stream.StreamSource;
 import javax.xml.xpath.XPath;
 
 import org.w3c.dom.Document;
@@ -19,6 +22,10 @@ import in.javakids.util.XPathUtility;
  */
 public class XMLParseUsingXPath {
 	public static void main(String[] args) throws FileNotFoundException {
+		
+		String s="<root><book><title>hello</title></book></root>";
+		InputStream source = new ByteArrayInputStream(s.getBytes());
+		
 		InputStream inputStream = new FileInputStream(
 				"C:\\System Design\\microservices\\workspaces\\XMLXPathExample\\src\\in\\javakids\\test\\test.xml");
 		Document doc = XPathUtility.getDocument(inputStream);
